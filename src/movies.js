@@ -115,6 +115,8 @@ function orderAlphabetically(moviesArray) {
 // in movieObject it looks like : duration: '2h 33min',
 // 2h 33min for ex should return 153 (as a number)
 
+/* Leaving this beautiful monster here to remember it forever.
+
 function turnHoursToMinutes(moviesArray) {
   for(movie of moviesArray){
 
@@ -139,8 +141,19 @@ function turnHoursToMinutes(moviesArray) {
   let newArray = moviesArray.map(function (el) {return el;});
   return newArray;
 }
+*/
 
+function turnHoursToMinutes(moviesArray) {
+  let newArray = Array.from(moviesArray)
+    for(movie of newArray){
+      movie.duration = movie.duration.split(" ")
+      let hours = parseInt(movie.duration[0]);
+      let minutes = parseInt(movie.duration[1]);
 
+      movie.duration = hours * 60 + minutes;
+    }
+  return newArray;
+}
 
 
 
