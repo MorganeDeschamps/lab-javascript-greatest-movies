@@ -144,14 +144,15 @@ function turnHoursToMinutes(moviesArray) {
 */
 
 function turnHoursToMinutes(moviesArray) {
-  let newArray = Array.from(moviesArray)
-    for(movie of newArray){
-      movie.duration = movie.duration.split(" ")
-      let hours = parseInt(movie.duration[0]);
-      let minutes = parseInt(movie.duration[1]);
-
-      movie.duration = hours * 60 + minutes;
-    }
+  let newArray = Array.from(moviesArray);
+  for(movie of newArray) {
+    let time = movie.duration.split("").filter(el => parseInt(el))
+    //returns array of strings, takes out letters and spaces
+    let hours = parseInt(time[0]) * 60
+    let minutes = time.filter(el => time.indexOf(el) > 0);
+    minutes = parseInt("0" + minutes.join(""));
+    movie.duration = hours + minutes;
+  }
   return newArray;
 }
 
